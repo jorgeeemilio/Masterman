@@ -12,12 +12,13 @@ public class Vista extends Frame
 	private static final long serialVersionUID = 1L;
 	Color colorRojo = new Color(255,0,0);
 	Color colorVerde = new Color(0,255,0);
+	Color colorAzul = new Color(0,0,255);
 	int color1=0, color2=0, color3=0, color4=0;
 	int aciertos = 0;
-	int intentos = 5;
+	int intentos = 10;
 
 	Dialog dlgFin = new Dialog(this, "Fin", true);
-	Label lblMensaje = new Label("¡Acertaste!");
+	Label lblMensaje = new Label("Â¡Acertaste!");
 
 	public Vista()
 	{
@@ -39,36 +40,52 @@ public class Vista extends Frame
 		{	
 			g.setColor(colorRojo);
 		}
-		else
+		else if(color1==1)
 		{
 			g.setColor(colorVerde);
+		}
+		else
+		{
+			g.setColor(colorAzul);
 		}
 		g.fill3DRect(10, 40, 50, 50, true);
 		if(color2==0)
 		{	
 			g.setColor(colorRojo);
 		}
-		else
+		else if(color2==1)
 		{
 			g.setColor(colorVerde);
+		}
+		else
+		{
+			g.setColor(colorAzul);
 		}
 		g.fill3DRect(70, 40, 50, 50, true);
 		if(color3==0)
 		{	
 			g.setColor(colorRojo);
 		}
-		else
+		else if(color3==1)
 		{
 			g.setColor(colorVerde);
+		}
+		else
+		{
+			g.setColor(colorAzul);
 		}
 		g.fill3DRect(130, 40, 50, 50, true);
 		if(color4==0)
 		{	
 			g.setColor(colorRojo);
 		}
-		else
+		else if(color4==1)
 		{
 			g.setColor(colorVerde);
+		}
+		else
+		{
+			g.setColor(colorAzul);
 		}
 		g.fill3DRect(190, 40, 50, 50, true);
 		g.setColor(Color.black);
@@ -88,6 +105,10 @@ public class Vista extends Frame
 			{
 				color1 = 1;
 			}
+			else if(color1 == 1)
+			{
+				color1 = 2;
+			}
 			else
 			{
 				color1 = 0;
@@ -97,6 +118,10 @@ public class Vista extends Frame
 			if(color2 == 0)
 			{
 				color2 = 1;
+			}
+			else if(color2 == 1)
+			{
+				color2 = 2;
 			}
 			else
 			{
@@ -108,6 +133,10 @@ public class Vista extends Frame
 			{
 				color3 = 1;
 			}
+			else if(color3 == 1)
+			{
+				color3 = 2;
+			}
 			else
 			{
 				color3 = 0;
@@ -118,6 +147,10 @@ public class Vista extends Frame
 			{
 				color4 = 1;
 			}
+			else if(color4 == 1)
+			{
+				color4 = 2;
+			}
 			else
 			{
 				color4 = 0;
@@ -126,15 +159,16 @@ public class Vista extends Frame
 		}
 		repaint();
 	}
-	public void actualizar(int c)
+	public void actualizar(int c, int i)
 	{
 		aciertos = c;
+		intentos = i;
 		repaint();
 	}
 	public void resetear()
 	{
 		aciertos = 0;
-		intentos = 5;
+		intentos = 10;
 		color1 = 0;
 		color2 = 0;
 		color3 = 0;
