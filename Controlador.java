@@ -1,5 +1,4 @@
 package es.studium.Masterman;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
@@ -11,6 +10,7 @@ public class Controlador implements WindowListener, MouseListener
 	Modelo modelo;
 	int secreto[] = new int[4];
 	int apuesta[] = new int[4];
+	int intentos = 10;
 
 	public Controlador(Vista v, Modelo m)
 	{
@@ -37,6 +37,10 @@ public class Controlador implements WindowListener, MouseListener
 			{
 				apuesta[0] = 1;
 			}
+			else if(apuesta[0]==1)
+			{
+				apuesta[0] = 2;
+			}
 			else
 			{
 				apuesta[0] = 0;
@@ -49,6 +53,10 @@ public class Controlador implements WindowListener, MouseListener
 			if(apuesta[1]==0)
 			{
 				apuesta[1] = 1;
+			}
+			else if(apuesta[1]==1)
+			{
+				apuesta[1] = 2;
 			}
 			else
 			{
@@ -63,6 +71,10 @@ public class Controlador implements WindowListener, MouseListener
 			{
 				apuesta[2] = 1;
 			}
+			else if(apuesta[2]==1)
+			{
+				apuesta[2] = 2;
+			}
 			else
 			{
 				apuesta[2] = 0;
@@ -75,6 +87,10 @@ public class Controlador implements WindowListener, MouseListener
 			if(apuesta[3]==0)
 			{
 				apuesta[3] = 1;
+			}
+			else if(apuesta[3]==1)
+			{
+				apuesta[3] = 2;
 			}
 			else
 			{
@@ -99,10 +115,17 @@ public class Controlador implements WindowListener, MouseListener
 					contador++;
 				}
 			}
+			intentos--;
 			System.out.println();
-			this.vista.actualizar(contador);
+			this.vista.actualizar(contador, intentos);
 			if(correcto)
 			{
+				this.vista.lblMensaje.setText("¡Acertaste!");
+				this.vista.dlgFin.setVisible(true);
+			}
+			if(intentos==0)
+			{
+				this.vista.lblMensaje.setText("Perdiste");
 				this.vista.dlgFin.setVisible(true);
 			}
 		}
@@ -127,6 +150,7 @@ public class Controlador implements WindowListener, MouseListener
 		{
 			this.vista.dlgFin.setVisible(false);
 			// Reset
+			intentos = 10;
 			this.modelo.generar(secreto);
 			this.vista.resetear();
 			for(int i = 0; i < 4; i++)
