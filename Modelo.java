@@ -10,7 +10,7 @@ public class Modelo
 	{
 		for(int i = 0; i < 4; i++)
 		{
-			secreto[i] = rnd.nextInt(2);
+			secreto[i] = rnd.nextInt(3);
 		}
 	}
 }
