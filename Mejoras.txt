@@ -1,2 +1,2 @@
-Mejora 1: Al realizar 5 intentos sin acertar, se pierde la partida
-Mejora 2: Meter un tercer color, amarillo, por ejemplo
+Mejora 1: Al realizar 10 intentos sin acertar, se pierde la partida
+Mejora 2: Meter un tercer color, azul, por ejemplo
